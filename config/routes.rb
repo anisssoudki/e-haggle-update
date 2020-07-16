@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'comments/create'
   root 'homepage#home'
   get '/about', to: 'homepage#about'
   get '/terms', to: 'homepage#terms'
