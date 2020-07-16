@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
     def new
      @product = Product.new
-      
+   
     end
 
     def edit
@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
 
 
       def product_params
-        params.require(:product).permit(:name, :price, :description, :image, :category_ids, :like)
+        params.require(:product).permit(:name, :price, :description, :image, :category_ids)
        
         # byebug
       end

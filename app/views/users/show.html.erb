@@ -27,9 +27,11 @@
     <li class="divider" tabindex="-1"></li>
     <li><a href="#!"><i class="material-icons"><img   id="fb" alt="fbshare" src='https://github.com/anisssoudki/just-a-logo/blob/master/Screenshot%20(34).png?raw=true'></i>authenticate account with facebook</a></li>
     <li><a href="<%=user_products_path(@user)%>">Browse Market</a></li>
-  
   </ul>
  
+<%= gravatar_for @user, size: 200 %>
+
+
 <div class="card-panel">
     <span class="pink-text text-lighten-3 "><h1 class="center">E-HAGGLE</h1></span>
   </div>
