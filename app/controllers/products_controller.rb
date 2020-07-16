@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
 
 
     def show 
-     
+     @comment = Comment.new
+     @comments = @product.comments.order("created_at DESC")
     end
 
     def index 

@@ -13,7 +13,7 @@ class User < ApplicationRecord
                         format: { with: VALID_EMAIL_REGEX }
     has_secure_password 
     acts_as_voter
-    has_many :comments
+    has_many :comments, dependent: :destroy
 
     # here is where we can abstract a bunch of logins for different providers but because this project is taking a lot of time i wont be doing it at this time
 #     def self.from_omniauth(auth)

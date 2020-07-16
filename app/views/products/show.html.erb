@@ -19,6 +19,20 @@
   </div>
 <span class= "likes-count"><%@product.get_upvotes.size%></span>
 <%# ----------------------------------------------------------- %>
+<%# ----------------------------------------------------------- %>
+<%# comment section %>
+<%=form_with model: [@product, @comment] do |f|%>
+<%=f.text_field :body%>
+<%=f.submit "comment"%>
+<%end%>
+
+<div class = "center">
+<%@comments.each do |comment|%>
+[<%=comment.created_at.strftime("%I:%M %p")%>] <%=comment.user.username%>: <%=comment.body%>
+<br>
+<%end%>
+</div>
+<%# ----------------------------------------------------------- %>
                 <br><br>
 <span class="card-title"><strong><%=@product.name%></strong> $<%=@product.price %></span>
 <br>
@@ -55,8 +69,6 @@
       </div>
     </div>
   </div>
-
-
 <%end%>
 
 <%= link_to 'Product Listing Page', user_products_path%>

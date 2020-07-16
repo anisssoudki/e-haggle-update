@@ -1,26 +1,27 @@
  <%@products.each do |product|%>
 <div class="center">
-
+ 
     <div class="col s12 m7">
       <div class="card">
         <div class="center">
           <img style="width:100px; height:auto">
                 <%=image_tag(product.image, style:'width:15%')%>
+                <%product.categories.each do |cat|%>
+                 Category: <%=cat.name%>
+                <%end%>
                 <br><br>
           <span class="card-title"><strong><%=product.name %></strong> $<%=product.price %></span>
-
-        <%product.categories.each do |cat|%>
-        <%=cat.name%>
-          <%end%>
-
-
+          <p> <%=pluralize(product.comments.count, "comments") %> </p>
+           <i class="material-icons">thumb_up</i>
+           <p>  <%= product.get_upvotes.size%> like</p> 
         </div>
+        
         <div class="btn-floating btn-small pulse pink">
          <a href="<%=user_product_path(current_user, product)%>"> <i class="material-icons">zoom_in</i> </a>
         
         </div>
         <div class="card-content">
-         <p><%=product.user.username %></p>
+         <p>Posted by: <%=product.user.username %></p>
         </div>
       </div>
     </div>

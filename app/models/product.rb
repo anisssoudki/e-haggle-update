@@ -11,5 +11,5 @@ class Product < ApplicationRecord
     acts_as_votable
     # accepts_nested_attributes_for :categories
     # self.per_page = 3
- 
+    has_many :comments, dependent: :destroy
   end
