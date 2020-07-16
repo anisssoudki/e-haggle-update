@@ -74,3 +74,4 @@ run rails db:migrate to migrate the database
 
 
 run rails s to start the server
+# e-haggle-update
