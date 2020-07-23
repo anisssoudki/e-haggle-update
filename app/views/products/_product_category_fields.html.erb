@@ -1,0 +1,6 @@
+
+  <%=product_category.collection_select( :category_id, Category.all, :id, :name, prompt: true) %> 
+     rate this category on a scale of 1 to 10: 
+     <%=product_category.number_field :like, {min: 1, max: 10}%>
+     <br>
+       

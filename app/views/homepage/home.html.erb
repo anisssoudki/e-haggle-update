@@ -1,48 +1,36 @@
 
 <main>
     
-   <% if !current_user%> 
+    <% if !current_user%> 
 <!-- Dropdown Trigger -->
-<h1 class="center">
-  <a class='dropdown-trigger btn pink' href='#' data-target='dropdown1'>Touch Me!</a>
-</h1>
+    <h1 class="center">
+      <a class='dropdown-trigger btn pink' href='#' data-target='dropdown1'>Touch Me!</a>
+    </h1>
  
   <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    
-    <li><a href=<%=signup_path%>>Sign Up</a></li>
-    <li><a href=<%=login_path%>>LOG IN</a></li>
-    
-    <li class="divider" tabindex="-1"></li>
-    
-   
-    
-     <li ><i class="material-icons"><img   id="fb" alt="fbshare" src='https://github.com/anisssoudki/just-a-logo/blob/master/Screenshot%20(34).png?raw=true'></i>
-      <%=link_to "fb login", "/auth/facebook", id: "sign_in"%>      
-    </li>
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href=<%=signup_path%>>Sign Up</a></li>
+      <li><a href=<%=login_path%>>LOG IN</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li ><i class="material-icons"><img   id="fb" alt="fbshare" src='https://github.com/anisssoudki/just-a-logo/blob/master/Screenshot%20(34).png?raw=true'>
+      </i>
+        <%=link_to "fb login", "/auth/facebook", id: "sign_in"%>      
+      </li>
     
    
-  </ul>
- <%end%>
-<div class="card-panel">
+    </ul>
+  <%end%>
+  <div class="card-panel">
     <span class="pink-text text-lighten-3 "><h1 class="center">E-HAGGLE</h1></span>
   </div>
 
-
-
-
-
-  
-
-<div class="center">
+  <div class="center">
     <span class="pink-text text-lighten-3 "><h1 class="center" >Powered by Materialize</h1></span>
   </div>
 
-
-<div class="center">
-<iframe width="724" height="407" src="https://www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allow="accelerometer; autoplay=1; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+  <div class="center">
+    <iframe width="724" height="407" src="https://www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allow="accelerometer; autoplay=1; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 </main>
-
 <br><br><br><br><br><br><br>
  

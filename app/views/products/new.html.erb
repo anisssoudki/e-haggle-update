@@ -1,2 +1,8 @@
 <h1>Create a new product</h1>
-<%=render 'form'%>
+<%# <%=form_for (@product) do |form|%>
+<%= render 'shared/errors', obj: @product%>
+<%= form_with(model: [:user, @product], local: true) do |form|%>
+
+<%=render 'form', {f: form, product: @product, categories: @categories}%>
+
+<%end%>

@@ -3,8 +3,6 @@ class ProductsController < ApplicationController
     before_action :require_user, except: [:show, :index]
     before_action :require_same_user, only: [:edit, :update, :destroy]
  
-
-
     def show 
      @comment = Comment.new
      @comments = @product.comments.order("created_at DESC")
@@ -12,36 +10,32 @@ class ProductsController < ApplicationController
 
     def index 
       # paginate rirectly query from the database like saying get me the first 5 pages than send a nexttoken to get the next 5 its a more abstract concept
-        @products = Product.paginate(page: params[:page], per_page: 5)
+        @products = Product.order("created_at DESC").paginate(page: params[:page], per_page: 5)
     end
 
     def new
      @product = Product.new
-   
+     @categories = Category.all 
+    2.times {@product.product_categories.build}
     end
 
     def edit
     end
 
-    
     def create
       @product = Product.new(product_params)
-      
       @product.user = current_user
-     
-   
-        if   @product.save 
-         
+        if   @product.save
             flash[:notice] = "Product has been successfully posted to e-haggle"
              redirect_to user_product_path(current_user, @product)
         else 
              render 'new'
         end
-      
     end
     
     def update 
-     
+      # byebug
+
        if  @product.update(product_params) 
         flash[:notice] = "Product was updated successfully"
         redirect_to user_product_path(@product) 
@@ -51,7 +45,6 @@ class ProductsController < ApplicationController
     end
 
     def destroy
-        
         @product.destroy
         redirect_to user_products_path
     end
@@ -74,13 +67,10 @@ class ProductsController < ApplicationController
 
 
       def product_params
-        params.require(:product).permit(:name, :price, :description, :image, :category_ids)
-       
+        params.require(:product).permit(:name, :price, :description, :image, product_categories_attributes: [:id, :category_id, :like])       
         # byebug
       end
 
-
-      
       def set_product
         @product = Product.find(params[:id])
       end

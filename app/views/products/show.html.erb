@@ -9,20 +9,30 @@
  <div>
   <div id="like-link">
     <%= render 'products/likes', product: @product%>
-    
   </div>
-  <div id="like-link">
-    <%= render 'products/like_link', product: @product%>
+    <div id="like-link">
+     <%= render 'products/like_link', product: @product%>
+    </div>
+    </div>    
   </div>
-</div>
-    
-  </div>
+<%# ----------------------------showing the user submittable attribute  %>
+  <%@product.product_categories.each do |pc|%>
+  category <%=pc.category.name%>
+  categoy rating <%=pc.like%>
+  <br>
+  <%end%>
+<%# ------------------------------------------------- %>
+
+
 <span class= "likes-count"><%@product.get_upvotes.size%></span>
+<br>
 <%# ----------------------------------------------------------- %>
 <%# ----------------------------------------------------------- %>
 <%# comment section %>
 <%=form_with model: [@product, @comment] do |f|%>
-<%=f.text_field :body%>
+<h5>Enter your comment below ↓</h5>
+<strong><%=f.text_field :body, placeholder: "type your comment on this line"%> </strong>
+
 <%=f.submit "comment"%>
 <%end%>
 
@@ -53,7 +63,7 @@
  <% if logged_in? && (@product.user == current_user || current_user.admin? ) %>
 
           <span class= "right-align">
-  <div class= "btn-floating btn-large pulse lime lighten-5"> <%= link_to 'Update', edit_user_product_path(@product)%>
+  <div class= "btn-floating btn-large pulse lime darken-5"> <%= link_to 'Edit', edit_user_product_path(@product)%>
 </div>
 </span>
 <br><br>
