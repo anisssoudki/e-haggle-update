@@ -13,9 +13,10 @@ class User < ApplicationRecord
                         format: { with: VALID_EMAIL_REGEX }
     has_secure_password 
     acts_as_voter
-    has_many :comments, dependent: :destroy
+    has_many :comments, dependent: :destroy   
+end
 
-    # here is where we can abstract a bunch of logins for different providers but because this project is taking a lot of time i wont be doing it at this time
+ # here is where we can abstract a bunch of logins for different providers but because this project is taking a lot of time i wont be doing it at this time
 #     def self.from_omniauth(auth)
 #     user = find_or_create_by(uid: facebook_params['uid'], provider: facebook_params['provider']) do |user|
 #     user.username = facebook_params['info']['name']
@@ -25,5 +26,4 @@ class User < ApplicationRecord
 #     user.save!
 #     user
 #   end   
-# end    
-end
+# end 

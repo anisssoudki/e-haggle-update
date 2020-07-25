@@ -6,8 +6,11 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+
 ruby '2.6.1'
+
 * System dependencies
+
 materialize gem 
 jQuery 
 in rails 6 there isnt a jQuery gem anymore 
@@ -66,11 +69,17 @@ if u have wrong version of jquery inside of package.json remove it and update li
 also if you triggering javascript for dopdowns you have to write it inside of the app/javascript/packs/application.js
 
 * Database creation
+
 run rails db:migrate to migrate the database 
+
 * Database initialization
+
 might have to add active-storage 
+
 * How to run the test suite
+
 rails test 
+
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions

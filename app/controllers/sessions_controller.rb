@@ -6,18 +6,15 @@ class SessionsController < ApplicationController
       end
     
       def create
-        
         user = User.find_by(email: session_params[:email])
           if user && user.authenticate(session_params[:password])
-          session[:user_id] = user.id
-          flash[:msg] = "Logged in successfully"
-          redirect_to user_path(user)
-  
-        else
-          
-          redirect_to login_path
-          flash[:err] = "hmmm, looks like the information you entered doesn't match our records."
-        end
+            session[:user_id] = user.id
+            flash[:msg] = "Logged in successfully"
+            redirect_to user_path(user)
+          else
+            redirect_to login_path
+            flash[:err] = "hmmm, looks like the information you entered doesn't match our records."
+          end
       end
     
       def logout
@@ -28,25 +25,22 @@ class SessionsController < ApplicationController
   
   
       def facebook
-       
-        
           user = User.find_or_create_by(uid: facebook_params['uid']) do |user|
-          user.username = facebook_params['info']['name']
-          # user.image = facebook_params['info']['image']
-          user.email = facebook_params['info']['email']
-          user.oauth_token = facebook_params['credentials']['token']
-          user.oauth_expires_at = Time.at(facebook_params['credentials']['expires_at'])
-          user.password = facebook_params['credentials']['token'][1..5] 
-          # byebug
-          user.save
-          user
-        end
+            user.username = facebook_params['info']['name']
+            # user.image = facebook_params['info']['image']
+            user.email = facebook_params['info']['email']
+            user.oauth_token = facebook_params['credentials']['token']
+            user.oauth_expires_at = Time.at(facebook_params['credentials']['expires_at'])
+            user.password = facebook_params['credentials']['token'][1..5] 
+            # byebug
+            user.save
+            user
+          end
           
           if session[:user_id] = user.id
-         
-          flash[:success] = "Welcome, #{user.username}!"
+            flash[:success] = "Welcome, #{user.username}!"
           else
-          flash[:err] = "There was an error while trying to authenticate you..."
+            flash[:err] = "There was an error while trying to authenticate you..."
           end
         redirect_to "/"
       end
@@ -67,7 +61,8 @@ class SessionsController < ApplicationController
         if logged_in?
           flash[:err] = "you are already logged in"
           redirect_to root_path
+        end
       end
-    end
+
   end
   

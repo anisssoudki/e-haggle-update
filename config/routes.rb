@@ -24,12 +24,12 @@ Rails.application.routes.draw do
         put "like" => "products#like"
         
       end
+    end
   end
-end
 
-resources :products, only: [:show] do
-  post "comments", to: "comments#create"
-end 
+  resources :products, only: [:show] do
+    post "comments", to: "comments#create"
+  end 
 
   resources :categories, except: [:destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

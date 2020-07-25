@@ -1,30 +1,24 @@
 class CategoriesController < ApplicationController
-
+  before_action :set_product, only: [:edit, :update]
 
    def new
     @category = Category.new
    end
 
-  
-
-   def create
-    @category = Category.new(category_params)
-   
-      
+  def create
+    @category = Category.new(category_params)  
     if @category.save 
       flash[:notice] = "Created Category Successfully"
       redirect_to categories_path
     else
       render 'new'
     end
-   end
+  end
 
-   def edit
-    @category = Category.find(params[:id])
+  def edit
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:notice] = "Category name updated successfully"
       redirect_to categories_path
@@ -38,17 +32,13 @@ class CategoriesController < ApplicationController
    end
 
   
-        private
+   private
       
-        def category_params
-          params.require(:category).permit(:name)
-        end
+  def category_params
+    params.require(:category).permit(:name)
+  end
       
-        # def require_admin
-        #   if !(logged_in? && current_user.admin?)
-        #     flash[:alert] = "Only admins can perform that action"
-        #     redirect_to categories_path
-        #   end
-        # end
-
+  def set_category
+    @category = Category.find(params[:id])
+  end
 end

@@ -1,13 +1,11 @@
-
 <main>
     
-    <% if !current_user%> 
-<!-- Dropdown Trigger -->
+  <% if !current_user%> 
+                  <!-- Dropdown Trigger -->
     <h1 class="center">
       <a class='dropdown-trigger btn pink' href='#' data-target='dropdown1'>Touch Me!</a>
     </h1>
- 
-  <!-- Dropdown Structure -->
+                    <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
       <li><a href=<%=signup_path%>>Sign Up</a></li>
       <li><a href=<%=login_path%>>LOG IN</a></li>
@@ -16,10 +14,9 @@
       </i>
         <%=link_to "fb login", "/auth/facebook", id: "sign_in"%>      
       </li>
-    
-   
     </ul>
   <%end%>
+  
   <div class="card-panel">
     <span class="pink-text text-lighten-3 "><h1 class="center">E-HAGGLE</h1></span>
   </div>

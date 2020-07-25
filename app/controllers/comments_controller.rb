@@ -9,13 +9,10 @@ before_action :require_user
     redirect_to user_product_path(current_user, @product)
   end
 
-
-
-
 private 
 
 def comment_params
-params.require(:comment).permit(:body, :product_id)
+  params.require(:comment).permit(:body, :product_id)
 end 
 
 def set_product
