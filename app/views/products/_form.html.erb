@@ -24,10 +24,10 @@ If you have created namespaced routes, form_with has a nifty shorthand for that 
 
  <h4>Category</h4> 
  <%# <form_for (product.product_categories)> %>
- <%= f.fields_for :product_categories do |product_category|%>
-     <%=render 'product_category_fields', product_category: product_category%>
-    
- <%end%>
+    <%= f.fields_for :product_categories do |product_category|%>
+        <%=render 'product_category_fields', product_category: product_category%>
+        
+    <%end%>
   
 <%# --------------------------------------------------- %>
 <%# this is showing when i inspect but not displaying for some reason bug!!! %>

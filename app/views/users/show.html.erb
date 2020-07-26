@@ -1,48 +1,39 @@
 <div class="center">
-    <h1 class="">
-     <%="(ADMIN)" if current_user.admin?%>   <%= @user.username%>'s Homepage
-    </h1>
+      <h1 class="">
+      <%="(ADMIN)" if current_user.admin?%>   <%= @user.username%>'s Homepage
+      </h1>
 
-<% if logged_in? && (@user == current_user || current_user.admin?) %>
-     <span class= "center-align">
-        <div class= "btn-floating btn-large pulse teal lighten-5"> <%= link_to 'Haggle', new_user_product_path(@user, @product) %></div>
-      </span>   
-
-  <h1 class="center">
-    <a class='dropdown-trigger btn pink' href='#' data-target='dropdown1'>Profile Console</a>
-  </h1>
- 
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <%if current_user.admin?%>
-      <li  class="btn">  <%= link_to "ADMIN",users_path if current_user.admin?%> </li>
-      <li  class="btn">  <%= link_to "Categories",categories_path if current_user.admin?%> </li>
-    <%end%>
-      <li><a href=<%=edit_user_path(@user)%>>Edit Your Profile</a></li>
+  <%if logged_in? && (@user == current_user || current_user.admin?) %>
+        <span class= "center-align">
+          <div class= "btn-floating btn-large pulse teal lighten-5"> <%= link_to 'Haggle', new_user_product_path(@user, @product) %></div>
+        </span> 
+          
+    <!-- Dropdown Trigger -->
+      <h1 class="center">
+        <a class='dropdown-trigger btn pink' href='#' data-target='dropdown1'>Profile Console</a>
+      </h1>
   
-    <%= link_to "Delete Profile", user_path(@user), class: "btn red accent-4", method: :delete, data: {confirm: "Warning!!!!! this will erase everything and cannot be undone."} %>
-    
-      <li class="divider" tabindex="-1"></li>
-      <li><a href="#!"><i class="material-icons"><img   id="fb" alt="fbshare" src='https://github.com/anisssoudki/just-a-logo/blob/master/Screenshot%20(34).png?raw=true'></i>authenticate account with facebook</a></li>
-      <li><a href="<%=user_products_path(@user)%>">Browse Market</a></li>
-  </ul>
- 
-<%= gravatar_for @user, size: 200 %>
-
-
-<div class="card-panel">
-    <span class="pink-text text-lighten-3 "><h1 class="center">E-HAGGLE</h1></span>
-  </div>
-
-
-
-
-<%end%>
-
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <%if current_user.admin?%>
+          <li  class="btn">  <%= link_to "ADMIN",users_path if current_user.admin?%> </li>
+          <li  class="btn">  <%= link_to "Categories",categories_path if current_user.admin?%> </li>
+        <%end%>
+        <li><a href=<%=edit_user_path(@user)%>>Edit Your Profile</a></li>
+        <%= link_to "Delete Profile", user_path(@user), class: "btn red accent-4", method: :delete, data: {confirm: "Warning!!!!! this will erase everything and cannot be undone."} %>
+        <li><a href="<%=user_products_path(@user)%>">Browse Market</a></li>
+    </ul>
+    <%= gravatar_for @user, size: 200 %>
+    <div class="card-panel">
+      <span class="pink-text text-lighten-3 "><h1 class="center">E-HAGGLE</h1></span>
+    </div>
+  <%end%>
 </div>
-  <h3 class= "center">MY products</h3>
-<% @user.products.each do |product|%>
-  <% if logged_in? && (product.user == current_user || current_user.admin?) %>
+
+ <h3 class= "center">MY products</h3>
+
+ <%@user.products.each do |product|%>
+   <%if logged_in? && (product.user == current_user || current_user.admin?) %>
       <div class="center">
           <br><br><br><br><br>
           <h4><div class="col s1"><%= product.name%><br></div></h4>
