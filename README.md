@@ -84,7 +84,13 @@ rails test
 
 * Deployment instructions
 
-* ...
+* database 
+
+run rake db:seed to seed database with some admin and normal users as well as building some categories for our product
+look inide the seed file you are able to modify or insert more data.
+
+
+* run the server
 run rails s to start the server
 
 Questions 
