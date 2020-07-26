@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
           else
             flash[:err] = "There was an error while trying to authenticate you..."
           end
-        redirect_to "/"
+        redirect_to user_path(user)
       end
   
   
