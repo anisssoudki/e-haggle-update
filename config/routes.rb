@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'comments/create'
+  
   root 'homepage#home'
   get '/about', to: 'homepage#about'
   get '/terms', to: 'homepage#terms'
@@ -26,7 +26,8 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  
+  get 'comments/create'
   resources :products, only: [:show] do
     post "comments", to: "comments#create"
   end 
