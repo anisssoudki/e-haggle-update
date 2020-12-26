@@ -420,10 +420,6 @@ class CreateComments < ActiveRecord::Migration
 end
 
 
-facebook credentiels
-App ID
-702975740483834
-App Secret
-eaa302f61382394ea9a633a82b2e4d1d
+
 
 
