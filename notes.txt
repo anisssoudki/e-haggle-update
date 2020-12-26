@@ -1,6 +1,7 @@
 
 -----------------------
-notes
+update
+notes 
 assets will load the css and js it will get loaded from layout application link 
 channels folder will work with application cable for chat app or messages  
 controles folder -> house all controllers 
